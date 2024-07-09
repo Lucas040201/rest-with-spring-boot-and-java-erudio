@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.erudio.shared.exceptions.UnsupportedMathOperationException;
 import br.com.erudio.shared.services.NumberConverterService;
-import br.com.erudio.shared.services.SimpleMath;
+import br.com.erudio.shared.services.SimpleMathService;
 
 @RestController
 public class MathController {
 
 	private static AtomicLong counter = new AtomicLong();
 	private NumberConverterService numberConverterService = new NumberConverterService();
-	private SimpleMath SimpleMath = new SimpleMath();
+	private SimpleMathService simpleMathService = new SimpleMathService();
 	
 	@RequestMapping(
 		value = "/sum/{numberOne}/{numberTwo}",
@@ -29,7 +29,7 @@ public class MathController {
 		if(!this.numberConverterService.isNumeric(numberOne) || !this.numberConverterService.isNumeric(numberTwo)) {
 			throw new UnsupportedMathOperationException("Please, set a numeric value");
 		}
-		return this.SimpleMath.sum(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
+		return this.simpleMathService.sum(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
 	}
 
 	@RequestMapping(
@@ -43,7 +43,7 @@ public class MathController {
 		if(!this.numberConverterService.isNumeric(numberOne) || !this.numberConverterService.isNumeric(numberTwo)) {
 			throw new UnsupportedMathOperationException("Please, set a numeric value");
 		}
-		return this.SimpleMath.subtraction(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
+		return this.simpleMathService.subtraction(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
 	}
 
 	
@@ -58,7 +58,7 @@ public class MathController {
 		if(!this.numberConverterService.isNumeric(numberOne) || !this.numberConverterService.isNumeric(numberTwo)) {
 			throw new UnsupportedMathOperationException("Please, set a numeric value");
 		}
-		return this.SimpleMath.division(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
+		return this.simpleMathService.division(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
 	}
 
 	@RequestMapping(
@@ -72,7 +72,7 @@ public class MathController {
 		if(!this.numberConverterService.isNumeric(numberOne) || !this.numberConverterService.isNumeric(numberTwo)) {
 			throw new UnsupportedMathOperationException("Please, set a numeric value");
 		}
-		return this.SimpleMath.multiplication(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
+		return this.simpleMathService.multiplication(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
 	}
 
 	@RequestMapping(
@@ -85,7 +85,7 @@ public class MathController {
 		if(!this.numberConverterService.isNumeric(number)) {
 			throw new UnsupportedMathOperationException("Please, set a numeric value");
 		}
-		return this.SimpleMath.squareRoot(this.numberConverterService.convertToDouble(number));
+		return this.simpleMathService.squareRoot(this.numberConverterService.convertToDouble(number));
 	}
 
 	@RequestMapping(
@@ -99,7 +99,7 @@ public class MathController {
 		if(!this.numberConverterService.isNumeric(numberOne) || !this.numberConverterService.isNumeric(numberTwo)) {
 			throw new UnsupportedMathOperationException("Please, set a numeric value");
 		}
-		return this.SimpleMath.mean(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
+		return this.simpleMathService.mean(this.numberConverterService.convertToDouble(numberOne), this.numberConverterService.convertToDouble(numberTwo));
 	}
 
 }

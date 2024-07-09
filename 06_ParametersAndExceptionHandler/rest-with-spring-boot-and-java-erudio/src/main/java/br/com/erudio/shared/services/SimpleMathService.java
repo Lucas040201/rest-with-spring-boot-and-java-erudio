@@ -1,6 +1,6 @@
 package br.com.erudio.shared.services;
 
-public class SimpleMath {
+public class SimpleMathService {
     public Double sum(Double numberOne, Double numberTwo) {
         return numberOne + numberTwo;
     }
